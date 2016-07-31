@@ -5,8 +5,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 
-public class FrameGame extends JFrame {
-		public FrameGame() {
+public class JFrameGame extends JFrame {
+		public JFrameGame() {
 			//Set title
 			this.setTitle("Java Russian Tetris");
 			//Set default close attribute;
@@ -22,6 +22,6 @@ public class FrameGame extends JFrame {
 			int y = (screen.height-this.getHeight())/2-32;
 			this.setLocation(x,y);
 			//Set default Panel
-			this.setContentPane(new PanelGame());
+			this.setContentPane(new JPanelGame());
 		}
 }

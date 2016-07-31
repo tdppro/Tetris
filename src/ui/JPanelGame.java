@@ -4,10 +4,10 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class PanelGame extends JPanel {
+public class JPanelGame extends JPanel {
 	private Layer[] lies = null;
 
-	public PanelGame() {
+	public JPanelGame() {
 			lies = new Layer[]{
 					new LayerBackground(0, 0, 0, 0),
 					new LayerDataBase(40, 32, 334, 279),
