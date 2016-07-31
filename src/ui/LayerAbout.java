@@ -2,14 +2,16 @@ package ui;
 
 import java.awt.Graphics;
 
-public class LayGame extends Lay {
-	
-	public LayGame(int x, int y, int w, int h) {
+public class LayerAbout extends Layer {
+
+	public LayerAbout(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
 		this.createWindow(g);
 	}
+
 }

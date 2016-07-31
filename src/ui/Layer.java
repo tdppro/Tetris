@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 /**
  * @author tdp draw windows
  */
-public abstract class Lay {
+public abstract class Layer {
 	private static final int SIZE = 7;
 	protected static final int PADDING = 16;
 
@@ -32,7 +32,7 @@ public abstract class Lay {
 	 */
 	protected int h;
 
-	protected Lay(int x, int y, int w, int h) {
+	protected Layer(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;

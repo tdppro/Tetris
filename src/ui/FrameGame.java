@@ -12,7 +12,7 @@ public class FrameGame extends JFrame {
 			//Set default close attribute;
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//Set the size of  windows
-			this.setSize(1172, 676);
+			this.setSize(1168, 680);
 			//Not allow user to change the size of windows
 			this.setResizable(false);
 			//Put the window in the center of Screen
