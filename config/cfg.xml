@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <game>
     <frame width = "1168" height="680" padding = "16" windowSize = "7">
-        <Layer class="ui.LayerBackground" x="0" y="0" w="0" h="0"/>
-        <Layer class="ui.LayerDataBase" x="40" y="32" w="334" h="279"/>
-        <Layer class="ui.LayerDisk" x="40" y="343" w="334" h="279"/>
-        <Layer class="ui.LayerGame" x="414" y="32" w="334" h="590"/>
-        <Layer class="ui.LayerButton" x="788" y="32" w="334" h="124"/>
-        <Layer class="ui.LayerNext" x="788" y="188" w="176" h="148"/>
-        <Layer class="ui.LayerLevel" x="964" y="188" w="158" h="148"/>
-        <Layer class="ui.LayerPoint" x="788" y="368" w="334" h="200"/>
+        <Layer className="ui.LayerBackground" x="0" y="0" w="0" h="0"/>
+        <Layer className="ui.LayerDataBase" x="40" y="32" w="334" h="279"/>
+        <Layer className="ui.LayerDisk" x="40" y="343" w="334" h="279"/>
+        <Layer className="ui.LayerGame" x="414" y="32" w="334" h="590"/>
+        <Layer className="ui.LayerButton" x="788" y="32" w="334" h="124"/>
+        <Layer className="ui.LayerNext" x="788" y="188" w="176" h="148"/>
+        <Layer className="ui.LayerLevel" x="964" y="188" w="158" h="148"/>
+        <Layer className="ui.LayerPoint" x="788" y="368" w="334" h="200"/>
     </frame>
     <system></system>
     <data></data>
