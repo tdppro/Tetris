@@ -30,6 +30,9 @@ public class GameConfig {
      */
     private int padding;
     
+    private String title;
+    
+    private int windowUp;
     /**
      * the attribute of layer
      */
@@ -62,9 +65,11 @@ public class GameConfig {
     private void setUiConfig(Element frame){
         this.width = Integer.parseInt(frame.attributeValue("width"));
         this.height = Integer.parseInt(frame.attributeValue("height"));
-        this.windowSize  = Integer.parseInt(frame.attributeValue("width"));
+        this.windowSize  = Integer.parseInt(frame.attributeValue("windowSize"));
         this.padding = Integer.parseInt(frame.attributeValue("padding"));
-        List<Element> layers = frame.elements();
+        this.title = frame.attributeValue("title");
+        this.windowUp = Integer.parseInt(frame.attributeValue("windowUp"));
+        List<Element> layers = frame.elements("Layer");
         layersConfig = new ArrayList<LayerConfig>();
         for (Element layer : layers) {
             LayerConfig lc = new LayerConfig(
@@ -100,8 +105,16 @@ public class GameConfig {
     public int getPadding() {
         return padding;
     }
+    
+    public String getTitle() {
+		return title;
+	}
 
-    public List<LayerConfig> getLayersConfig() {
+	public int getWindowUp() {
+		return windowUp;
+	}
+
+	public List<LayerConfig> getLayersConfig() {
         return layersConfig;
     }
     

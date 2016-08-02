@@ -1,31 +1,46 @@
 package ui;
 
 import java.awt.Graphics;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
+import config.ConfigFactory;
+import config.GameConfig;
+import config.LayerConfig;
+
 public class JPanelGame extends JPanel {
-	private Layer[] lies = null;
+	private ArrayList<Layer> layers = null;
 
 	public JPanelGame() {
-			lies = new Layer[]{
-					new LayerBackground(0, 0, 0, 0),
-					new LayerDataBase(40, 32, 334, 279),
-					new LayerDisk(40, 343, 334, 279),
-					new LayerGame(414, 32, 334, 590),
-					new LayerButton(788, 32, 334, 124),
-					new LayerNext(788, 188, 176, 148),
-					new LayerLevel(964, 188, 158, 148),
-					new LayerPoint(788, 368, 334, 200)
-			};
+		try {
+			GameConfig cfg = ConfigFactory.getGameConfig();
+			// get layer config
+			List<LayerConfig> layersCfg = cfg.getLayersConfig();
+			//create game layer arrays
+			layers = new  ArrayList<Layer>(layersCfg.size());
+			for (LayerConfig layerCfg : layersCfg) {
+				//Get Class Object
+				Class<?>  c = Class.forName(layerCfg.getClassName());
+				//Get Constructor 
+				Constructor<?>  ctr = c.getConstructor(int.class,int.class,int.class,int.class);
+				//Create the object through constructor
+				Layer l = (Layer)ctr.newInstance(layerCfg.getX(),layerCfg.getY(),layerCfg.getW(),layerCfg.getH());
+				layers.add(l);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		}
 
 	@Override
 	public void paintComponent(Graphics g) {
 		//循环刷新游戏界面
-			for (int i = 0; i < lies.length; i++) {
+			for (int i = 0; i < layers.size(); i++) {
 				//刷新新窗口
-				lies[i].paint(g);
+				layers.get(i).paint(g);
 			}
 	}
 }
