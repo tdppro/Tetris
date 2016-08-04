@@ -9,7 +9,7 @@ import config.ConfigFactory;
 import config.GameConfig;
 
 public class JFrameGame extends JFrame {
-		public JFrameGame() {
+		public JFrameGame(JPanelGame panelGame) {
 			GameConfig cfg = ConfigFactory.getGameConfig();
 			//Set title
 			this.setTitle(cfg.getTitle());
@@ -26,6 +26,7 @@ public class JFrameGame extends JFrame {
 			int y = (screen.height-this.getHeight()>>1)-cfg.getWindowUp();
 			this.setLocation(x,y);
 			//Set default Panel
-			this.setContentPane(new JPanelGame());
+			this.setContentPane(panelGame);
+			this.setVisible(true);
 		}
 }
