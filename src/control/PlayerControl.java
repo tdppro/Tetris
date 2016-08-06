@@ -11,11 +11,11 @@ public class PlayerControl extends KeyAdapter{
 	}
 	/* (non-Javadoc)
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
-	 * 键盘按下时间
+	 * 键盘按下事件
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-	System.out.println(e.getKeyCode());		
+	    this.gameControl.test();
 	}
-
+	
 }

@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 
 import config.ConfigFactory;
 import config.GameConfig;
+import dto.GameDto;
 
 /**
  * @author tdp 画窗口
@@ -42,7 +43,7 @@ public abstract class Layer {
 	 * 窗口高度
 	 */
 	protected int h;
-
+	protected  GameDto dto = null;
 	public Layer(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
@@ -80,7 +81,11 @@ public abstract class Layer {
 
 	}
 
-	/**
+    public void setDto(GameDto dto) {
+        this.dto = dto;
+    }
+
+    /**
 	 * flush the content of game
 	 * 
 	 * @param g

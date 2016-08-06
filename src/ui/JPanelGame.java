@@ -10,20 +10,28 @@ import javax.swing.JPanel;
 import config.ConfigFactory;
 import config.GameConfig;
 import config.LayerConfig;
-import control.GameControl;
 import control.PlayerControl;
-import service.GameService;
+import dto.GameDto;
 
 public class JPanelGame extends JPanel {
 	private ArrayList<Layer> layers = null;
-
-	public JPanelGame() {
+	private GameDto dto;
+	public JPanelGame( GameDto dto) {
+	    //获得dto对象
+	    this.dto = dto;
 		initComponet();
 		initLayer();
 		}
 	
+	/**
+	 * @param control
+	 * 玩家控制器
+	 */
+	public void setGameControl(PlayerControl control){
+	    this.addKeyListener(control);
+	    }
+	
 	private void initComponet(){
-		this.addKeyListener(new PlayerControl(new GameControl(this, new GameService())));
 	}
 	/**
 	 * 初始化层
@@ -41,8 +49,11 @@ public class JPanelGame extends JPanel {
 				//Get Constructor 
 				Constructor<?>  ctr = c.getConstructor(int.class,int.class,int.class,int.class);
 				//Create the object through constructor
-				Layer l = (Layer)ctr.newInstance(layerCfg.getX(),layerCfg.getY(),layerCfg.getW(),layerCfg.getH());
-				layers.add(l);
+				Layer layer = (Layer)ctr.newInstance(layerCfg.getX(),layerCfg.getY(),layerCfg.getW(),layerCfg.getH());
+				//设置游戏数据对象
+				layer.setDto(dto);
+				//增加游戏图层
+				layers.add(layer);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
