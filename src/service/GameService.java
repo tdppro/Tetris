@@ -6,50 +6,66 @@ import dto.GameDto;
 import entity.GameAct;
 
 public class GameService {
-	private GameDto dto;
-	public GameService(GameDto dto) {
-		this.dto = dto;
-		GameAct act = new GameAct();
-		dto.setGameAct(act);
-	}
-	
+    private GameDto dto;
+
+    public GameService(GameDto dto) {
+        this.dto = dto;
+        GameAct act = new GameAct();
+        dto.setGameAct(act);
+    }
+
     /**
      * 方向键控制向上
      */
     public void keyUp() {
-        //Todo 旋转
-        this.dto.getGameAct().move(0, -1);
+        // Todo 旋转
+        if (this.canMove(0, -1)) {
+            this.dto.getGameAct().move(0, -1);
+        }
     }
+
     /**
      * 方向键控制向下
      */
     public void keyDown() {
-        this.dto.getGameAct().move(0, 1);
+        if (this.canMove(0, 1)) {
+            this.dto.getGameAct().move(0, 1);
+        }
     }
+
     /**
      * 方向键控制向左
      */
     public void keyLeft() {
-        this.dto.getGameAct().move(-1, 0);
+        if (this.canMove(-1, 0)) {
+            this.dto.getGameAct().move(-1, 0);
+        }
     }
+
     /**
      * 方向键控制向右
      */
     public void keyRight() {
-        this.dto.getGameAct().move(1, 0);
+        if (this.canMove(1, 0)) {
+            this.dto.getGameAct().move(1, 0);
+        }
     }
-    
+
     /**
      * @param moveX
      * @param moveY
-     * @return
+     * @return 判断是否可以移动
+     * 
      */
-    private boolean canMove(int moveX, int moveY){
+    private boolean canMove(int moveX, int moveY) {
         Point[] nowPoints = this.dto.getGameAct().getActPoints();
         for (int i = 0; i < nowPoints.length; i++) {
-          int newX = nowPoints[i].x+moveX;
-          int newY = nowPoints[i].y +moveY;
-            
+            int newX = nowPoints[i].x + moveX;
+            int newY = nowPoints[i].y + moveY;
+            // TODO
+            if (newX < 0 || newX > 9 || newY < 0 || newY > 17) {
+                return false;
+            }
         }
         return true;
     }

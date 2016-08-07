@@ -17,16 +17,16 @@ public class PlayerControl extends KeyAdapter{
 	public void keyPressed(KeyEvent e) {
 	    //TODO 
 	    switch (e.getKeyCode()) {
-        case KeyEvent.VK_UP:
+        case KeyEvent.VK_W:
             this.gameControl.keyUp();
             break;
-        case KeyEvent.VK_DOWN:
+        case KeyEvent.VK_S:
             this.gameControl.keyDown();
             break;
-        case KeyEvent.VK_LEFT:
+        case KeyEvent.VK_A:
             this.gameControl.keyLeft();
             break;
-        case KeyEvent.VK_RIGHT:
+        case KeyEvent.VK_D:
             this.gameControl.keyRight();
             break;
         default:
