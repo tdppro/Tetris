@@ -22,9 +22,32 @@ public class GameControl {
 		this.panelGame = panelGame;
 		this.gameService  = gameService;
 	}
-    public void test() {
-        // TODO Auto-generated method stub
-        this.gameService.gameTest();
+    /**
+     * 方向键控制向上
+     */
+    public void keyUp() {
+        this.gameService.keyUp();
         this.panelGame.repaint();
     }
+    /**
+     * 方向键控制向下
+     */
+    public void keyDown() {
+        this.gameService.keyDown();
+        this.panelGame.repaint();
+    }
+    /**
+     * 方向键控制向左
+     */
+    public void keyLeft() {
+        this.gameService.keyLeft();
+        this.panelGame.repaint();
+}
+    /**
+     * 方向键控制向右
+     */
+    public void keyRight() {
+        this.gameService.keyRight();
+        this.panelGame.repaint();
+}
 }

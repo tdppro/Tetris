@@ -3,11 +3,11 @@ package entity;
 import java.awt.Point;
 
 public class GameAct {
-    private Point[] actPoint;
+    private Point[] actPoints;
     
     public GameAct(){
         //TODO 配置文件
-        actPoint = new Point[] {
+        actPoints = new Point[] {
                 new Point(3,0),
                 new Point(4,0),
                 new Point(5,0),
@@ -15,13 +15,20 @@ public class GameAct {
         };
     }
 
-    public Point[] getActPoint() {
-        return actPoint;
+    public Point[] getActPoints() {
+        return actPoints;
     }
 
-    public void setActPoint(Point[] actPoint) {
-        this.actPoint = actPoint;
+    /**
+     * @param moveX X轴偏移量
+     * @param moveY Y轴偏移量
+     */
+    public void move(int moveX, int moveY){
+        //移动处理
+        for (int i = 0; i < actPoints.length; i++) {
+            actPoints[i].x += moveX;
+            actPoints[i].y +=moveY;
+        }
     }
-    
     
 }
