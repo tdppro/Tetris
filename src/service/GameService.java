@@ -19,9 +19,7 @@ public class GameService {
      */
     public void keyUp() {
         // Todo Ðý×ª
-        if (this.canMove(0, -1)) {
-            this.dto.getGameAct().move(0, -1);
-        }
+    	this.dto.getGameAct().round();
     }
 
     /**
