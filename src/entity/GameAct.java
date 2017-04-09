@@ -28,28 +28,50 @@ public class GameAct {
 	 * @param moveY
 	 *            Y轴偏移量
 	 */
-	public void move(int moveX, int moveY) {
+	public boolean move(int moveX, int moveY) {
 		// 移动处理
 		for (int i = 0; i < actPoints.length; i++) {
-			actPoints[i].x += moveX;
-			actPoints[i].y += moveY;	
+			int newX= actPoints[i].x+ moveX;
+			int newY = actPoints[i].y+ moveY;	
+			if(isOverMap(newX, newY)){
+				return false;
+			}
 		}
+		for (int i = 0; i < actPoints.length; i++) {
+			actPoints[i].x += moveX;
+			actPoints[i].y += moveY;
+		}
+		return true;
 	}
 
 	/**
-	 * 旋转 A.x = O.y+O.x-B.y A.y=O.y-O.x+B.x
+	 * 旋转 A.x = O.y+O.x-B.y 
+	 * 			A.y=O.y-O.x+B.x
 	 */
 	public void round() {
-		for (int i = 0; i < actPoints.length; i++) {
+		for (int i = 1; i < actPoints.length; i++) {
 			int newX = actPoints[0].y + actPoints[0].x - actPoints[i].y;
-			int newY = actPoints[0].y - actPoints[0].x + actPoints[i].x;
-			if (newX < MIN_X || newX > MAX_X || newY < MIN_Y || newY > MIN_Y)
+			int newY = actPoints[0].y -  actPoints[0].x +actPoints[i].x;
+			if (this.isOverMap(newX, newY))
 			{
 				return; 
 			}
-				actPoints[i].x = newX;
+		}
+		for (int i = 1; i< actPoints.length;i++){
+			int newX = actPoints[0].y + actPoints[0].x - actPoints[i].y;
+			int newY = actPoints[0].y -  actPoints[0].x +actPoints[i].x;
+			actPoints[i].x = newX;
 			actPoints[i].y = newY;
 		}
 	}
-
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 * 判断是否超出边界
+	 */
+	private boolean isOverMap(int x, int y){
+		return x < MIN_X || x > MAX_X || y < MIN_Y || y > MAX_Y;
+	}
 }

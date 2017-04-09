@@ -26,27 +26,28 @@ public class GameService {
      * 方向键控制向下
      */
     public void keyDown() {
-        if (this.canMove(0, 1)) {
-            this.dto.getGameAct().move(0, 1);
-        }
+            if(!this.dto.getGameAct().move(0, 1)){
+            	//获得游戏地图对象
+            	boolean[][] map = this.dto.getGameMap();
+            	Point[] act = this.dto.getGameAct().getActPoints();
+            	for (int i = 0; i < act.length; i++) {
+					map[act[i].x][act[i].y] = true;
+				}
+            }
     }
 
     /**
      * 方向键控制向左
      */
     public void keyLeft() {
-        if (this.canMove(-1, 0)) {
             this.dto.getGameAct().move(-1, 0);
-        }
     }
 
     /**
      * 方向键控制向右
      */
     public void keyRight() {
-        if (this.canMove(1, 0)) {
             this.dto.getGameAct().move(1, 0);
-        }
     }
 
     /**
@@ -55,16 +56,4 @@ public class GameService {
      * @return 判断是否可以移动
      * 
      */
-    private boolean canMove(int moveX, int moveY) {
-        Point[] nowPoints = this.dto.getGameAct().getActPoints();
-        for (int i = 0; i < nowPoints.length; i++) {
-            int newX = nowPoints[i].x + moveX;
-            int newY = nowPoints[i].y + moveY;
-            // TODO
-            if (newX < 0 || newX > 9 || newY < 0 || newY > 17) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

@@ -43,6 +43,16 @@ public class GameDto {
 	 * 当前消行
 	 */
 	private int nowRemoveLine;
+	public GameDto() {
+		// TODO Auto-generated constructor stub
+		dtoInit();
+	}
+	
+	public void dtoInit(){
+		//TODO
+		this.gameMap = new boolean[10][18];
+		//TODO
+	}
 
 	public List<Player> getDbRecode() {
 		return dbRecode;
