@@ -14,10 +14,15 @@ public class GameAct {
 	private static int MAX_Y = 17;
 
 	public GameAct() {
+		this.init(0);
 		// TODO 配置文件
-		actPoints = new Point[] { new Point(4, 0), new Point(3, 0), new Point(5, 0), new Point(5, 1), };
 	}
+	
+	public void init(int actCode){
+		//根据actCode的值来刷新方块
+		actPoints = new Point[] { new Point(4, 0), new Point(3, 0), new Point(5, 0), new Point(5, 1), };
 
+	}
 	public Point[] getActPoints() {
 		return actPoints;
 	}
